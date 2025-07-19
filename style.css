@@ -1,0 +1,1506 @@
+/*
+ * style.css
+ * Styles personnalisés pour le site web du restaurant
+ */
+
+:root {
+    --primary-color: #A0522D; /* Couleur principale (terre de sienne) */
+    --secondary-color: #F5DEB3; /* Couleur secondaire (blanche) */
+    --dark-color: #333;
+    --light-color: #f8f9fa;
+    --text-color: #555;
+    --heading-color: #333;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Utilisez une police plus agréable */
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Police pour les titres */
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--dark-color);
+    padding: 0.8rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: var(--secondary-color) !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--light-color) !important;
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* --- Hero Section (Accueil) --- */
+.hero-section {
+    position: relative;
+    height: 80vh; /* Hauteur relative à la fenêtre */
+    background: url('../img/hero-background.jpg') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 56px; /* Pour compenser la navbar fixe */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay sombre */
+}
+
+.hero-content {
+    position: relative; /* Pour être au-dessus de l'overlay */
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+/* --- General Content Styling --- */
+main {
+    flex: 1; /* Pour que le footer reste en bas */
+    padding: 40px 0;
+}
+
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* --- About Section --- */
+.about-img {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Menu Section --- */
+.menu-category-title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.card.menu-item {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Pour que l'image ne dépasse pas les bords arrondis */
+}
+
+.card.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.menu-item .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.menu-item .card-body {
+    padding: 1.5rem;
+}
+
+.menu-item .card-title {
+    font-size: 1.3rem;
+    color: var(--heading-color);
+}
+
+.menu-item .card-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.menu-item .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* --- Galerie Carousel --- */
+#galleryCarousel .carousel-item img {
+    height: 500px; /* Hauteur fixe pour les images du carousel */
+    object-fit: cover;
+}
+
+/* --- Testimonials --- */
+.testimonial-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.testimonial-card .fa-quote-left {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.testimonial-card .customer-name {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: var(--heading-color);
+}
+
+/* --- Contact / Reservation Form --- */
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info ul li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.contact-info ul li i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.contact-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0.8rem 1rem;
+}
+
+.contact-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(160, 82, 45, 0.25);
+}
+
+.contact-form .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #8B4513; /* Un peu plus foncé */
+    border-color: #8B4513;
+}
+
+/* Google Maps iframe */
+.map-container {
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- Team Section --- */
+.team-member-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.team-member-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.team-member-card h5 {
+    font-size: 1.3rem;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+}
+
+.team-member-card p.text-muted {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    margin: 0 8px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.footer .social-links a {
+    color: var(--light-color);
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .menu-item .card-img-top {
+        height: 180px;
+    }
+
+    #galleryCarousel .carousel-item img {
+        height: 200px;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .menu-item .card-img-top {
+        height: 150px;
+    }
+
+    #galleryCarousel .carousel-item img {
+        height: 300px;
+    }
+
+    .contact-info ul li {
+        font-size: 1rem;
+    }
+
+    .team-member-card img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        height: 50vh;
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .hero-content .btn {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .menu-item .card-img-top {
+        height: 120px;
+    }
+
+    #galleryCarousel .carousel-item img {
+        height: 250px;
+    }
+
+    .testimonial-card {
+        padding: 1rem;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+/* css apropos */
+/*
+ * style.css
+ * Styles personnalisés pour le site web du restaurant "Le Goût d'Antan"
+ */
+
+/* --- Variables CSS pour les couleurs --- */
+:root {
+    --primary-color: #A0522D; /* Terre de Sienne (Brun-Rougeâtre) - Pour les accents, boutons, titres */
+    --secondary-color: #F5DEB3; /* Blanched Almond (Blanc Cassé) - Pour les éléments clairs, texte sur fond sombre */
+    --dark-color: #333; /* Gris très foncé - Pour le fond de la navbar, texte sombre */
+    --light-color: #f8f9fa; /* Presque blanc (Bootstrap default) - Pour le fond des sections, texte clair */
+    --text-color: #555; /* Gris moyen - Pour le texte courant */
+    --heading-color: #333; /* Gris très foncé - Pour la plupart des titres */
+}
+
+/* --- Styles Généraux du Corps (Body) --- */
+body {
+    font-family: 'Open Sans', sans-serif; /* Police moderne et lisible pour le corps */
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    display: flex; /* Pour positionner le footer en bas de page */
+    flex-direction: column;
+    min-height: 100vh; /* La hauteur minimale est de 100% de la fenêtre */
+}
+
+/* --- Styles des Titres (H1 à H6) --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Police élégante pour les titres */
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Navbar (Barre de Navigation) --- */
+.navbar {
+    background-color: var(--dark-color); /* Fond sombre */
+    padding: 0.8rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Légère ombre */
+}
+
+.navbar-brand {
+    color: var(--secondary-color) !important; /* Couleur du texte de la marque */
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important; /* Effet au survol */
+}
+
+.navbar-nav .nav-link {
+    color: var(--light-color) !important; /* Couleur des liens de navigation */
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important; /* Couleur des liens au survol et actif */
+}
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1); /* Bordure du bouton toggle sur mobile */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Icône burger blanche */
+}
+
+/* --- Section Héro (Accueil) --- */
+.hero-section {
+    position: relative;
+    height: 80vh; /* Hauteur de 80% de la fenêtre visible */
+    background: url('../img/hero-background.jpg') no-repeat center center/cover; /* Image de fond */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 56px; /* Compensate for fixed navbar height */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay sombre pour améliorer la lisibilité du texte */
+}
+
+.hero-content {
+    position: relative; /* Pour s'assurer qu'il est au-dessus de l'overlay */
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: white; /* Couleur blanche pour le titre sur fond sombre */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Ombre pour le texte */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px; /* Boutons arrondis */
+    transition: all 0.3s ease;
+}
+
+/* --- Style Général du Contenu Principal (Main) --- */
+main {
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible, poussant le footer vers le bas */
+    padding: 40px 0;
+}
+
+section {
+    padding: 60px 0; /* Espacement vertical pour chaque section */
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color); /* Ligne décorative sous les titres de section */
+}
+
+/* --- Section À Propos --- */
+.about-img {
+    border-radius: 8px; /* Coins légèrement arrondis */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Ombre subtile */
+}
+
+/* --- Section Menu --- */
+.menu-category-title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.card.menu-item {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation au survol */
+    overflow: hidden; /* Assure que l'image ne déborde pas des coins arrondis */
+}
+
+.card.menu-item:hover {
+    transform: translateY(-5px); /* Légère élévation au survol */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Ombre plus prononcée au survol */
+}
+
+.menu-item .card-img-top {
+    height: 200px;
+    object-fit: cover; /* Recadre l'image pour couvrir la zone sans déformer */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.menu-item .card-body {
+    padding: 1.5rem;
+}
+
+.menu-item .card-title {
+    font-size: 1.3rem;
+    color: var(--heading-color);
+}
+
+.menu-item .card-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.menu-item .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* --- Galerie Carousel --- */
+#galleryCarousel .carousel-item img {
+    height: 500px; /* Hauteur fixe pour toutes les images du carousel */
+    object-fit: cover;
+}
+
+/* --- Témoignages --- */
+.testimonial-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.testimonial-card .fa-quote-left {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.testimonial-card .customer-name {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: var(--heading-color);
+}
+
+/* --- Section Contact / Formulaire de Réservation --- */
+.contact-info ul {
+    list-style: none; /* Supprime les puces par défaut */
+    padding: 0;
+}
+
+.contact-info ul li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.contact-info ul li i {
+    color: var(--primary-color); /* Couleur de l'icône */
+    margin-right: 10px;
+}
+
+.contact-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0.8rem 1rem;
+}
+
+.contact-form .form-control:focus {
+    border-color: var(--primary-color); /* Couleur de la bordure au focus */
+    box-shadow: 0 0 0 0.2rem rgba(160, 82, 45, 0.25); /* Ombre au focus avec transparence */
+}
+
+.contact-form .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #8B4513; /* Une teinte plus foncée de la couleur primaire */
+    border-color: #8B4513;
+}
+
+/* --- Google Maps iframe --- */
+.map-container {
+    padding-bottom: 56.25%; /* Ratio d'aspect 16:9 pour l'iframe responsive */
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; /* Supprime la bordure par défaut de l'iframe */
+}
+
+/* --- Section Équipe --- */
+.team-member-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.team-member-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Assure que l'image remplit le cercle sans déformer */
+    border-radius: 50%; /* Image ronde */
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color); /* Bordure autour de l'image */
+}
+
+.team-member-card h5 {
+    font-size: 1.3rem;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+}
+
+.team-member-card p.text-muted {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    margin: 0 8px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.footer .social-links a {
+    color: var(--light-color);
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Ajustements Responsive (Media Queries) --- */
+
+/* Pour les tablettes et les écrans plus petits (max-width 992px) */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .menu-item .card-img-top {
+        height: 180px;
+    }
+
+    #galleryCarousel .carousel-item img {
+        height: 400px;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Pour les petits écrans et les mobiles (max-width 768px) */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 40px 0; /* Réduit le padding des sections */
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .menu-item .card-img-top {
+        height: 150px;
+    }
+
+    #galleryCarousel .carousel-item img {
+        height: 300px;
+    }
+
+    .contact-info ul li {
+        font-size: 1rem;
+    }
+
+    .team-member-card img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Pour les très petits écrans mobiles (max-width 576px) */
+@media (max-width: 576px) {
+    .hero-section {
+        height: 50vh;
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .hero-content .btn {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .menu-item .card-img-top {
+        height: 120px;
+    }
+
+    #galleryCarousel .carousel-item img {
+        height: 250px;
+    }
+
+    .testimonial-card {
+        padding: 1rem;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+/* css pour equipe */
+/*
+ * style.css
+ * Styles personnalisés pour le site web du restaurant "H Food Resto"
+ */
+
+/* --- Variables CSS pour les couleurs --- */
+:root {
+    --primary-color: #A0522D; /* Terre de Sienne (Brun-Rougeâtre) - Pour les accents, boutons, titres */
+    --secondary-color: #F5DEB3; /* Blanched Almond (Blanc Cassé) - Pour les éléments clairs, texte sur fond sombre */
+    --dark-color: #333; /* Gris très foncé - Pour le fond de la navbar, texte sombre */
+    --light-color: #f8f9fa; /* Presque blanc (Bootstrap default) - Pour le fond des sections, texte clair */
+    --text-color: #555; /* Gris moyen - Pour le texte courant */
+    --heading-color: #333; /* Gris très foncé - Pour la plupart des titres */
+}
+
+/* --- Styles Généraux du Corps (Body) --- */
+body {
+    font-family: 'Open Sans', sans-serif; /* Police moderne et lisible pour le corps */
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    display: flex; /* Pour positionner le footer en bas de page */
+    flex-direction: column;
+    min-height: 100vh; /* La hauteur minimale est de 100% de la fenêtre */
+    margin-top: 56px; /* Ajustement pour la navbar fixe, à vérifier si nécessaire après compilation */
+}
+
+/* Retire la marge supérieure du body une fois la navbar fixe en place,
+   pour éviter un espace vide si la première section n'a pas de padding. */
+body.fixed-navbar-padding {
+    padding-top: 56px; /* Ou la hauteur réelle de votre navbar */
+}
+
+
+/* --- Styles des Titres (H1 à H6) --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Police élégante pour les titres */
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Navbar (Barre de Navigation) --- */
+.navbar {
+    background-color: var(--dark-color); /* Fond sombre */
+    padding: 0.8rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Légère ombre */
+    /* retire le margin-top si vous utilisez le padding-top sur le body */
+    /* margin-top: 56px; */
+}
+
+.navbar-brand {
+    color: var(--secondary-color) !important; /* Couleur du texte de la marque */
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    display: flex; /* Pour aligner l'image et le texte */
+    align-items: center; /* Centrer verticalement */
+}
+
+.navbar-brand img {
+    margin-right: 0.5rem; /* Espace entre le logo et le texte de la marque */
+    border-radius: 50%; /* Pour un logo rond si vous le souhaitez */
+}
+
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important; /* Effet au survol */
+}
+
+.navbar-nav .nav-link {
+    color: var(--light-color) !important; /* Couleur des liens de navigation */
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important; /* Couleur des liens au survol et actif */
+}
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1); /* Bordure du bouton toggle sur mobile */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Icône burger blanche */
+}
+
+/* --- Section Héro (Accueil) --- */
+.hero-section {
+    position: relative;
+    height: 80vh; /* Hauteur de 80% de la fenêtre visible */
+    background: url('../img/hero-background.jpg') no-repeat center center/cover; /* Image de fond */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    /* Supprimé le margin-top ici car il est géré par le body padding-top */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay sombre pour améliorer la lisibilité du texte */
+}
+
+.hero-content {
+    position: relative; /* Pour s'assurer qu'il est au-dessus de l'overlay */
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: white; /* Couleur blanche pour le titre sur fond sombre */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Ombre pour le texte */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px; /* Boutons arrondis */
+    transition: all 0.3s ease;
+}
+
+/* --- Style Général du Contenu Principal (Main) --- */
+main {
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible, poussant le footer vers le bas */
+    /* padding-top: 40px; si la première section n'a pas de padding-top pour compenser la navbar fixe */
+}
+
+section {
+    padding: 60px 0; /* Espacement vertical pour chaque section */
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color); /* Ligne décorative sous les titres de section */
+}
+
+/* --- Section À Propos --- */
+.about-img {
+    border-radius: 8px; /* Coins légèrement arrondis */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Ombre subtile */
+}
+
+/* --- Section Menu --- */
+.menu-category-title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 2rem
+
+    /* css pour contact */
+    /*
+ * style.css
+ * Styles personnalisés pour le site web du restaurant "H Food Resto"
+ */
+
+/* --- CSS Variables for Colors --- */
+:root {
+    --primary-color: #A0522D; /* Sienna (Reddish-Brown) - For accents, buttons, headings */
+    --secondary-color: #F5DEB3; /* Blanched Almond (Off-white) - For light elements, text on dark backgrounds */
+    --dark-color: #333; /* Very dark gray - For navbar background, dark text */
+    --light-color: #f8f9fa; /* Near white (Bootstrap default) - For section backgrounds, light text */
+    --text-color: #555; /* Medium gray - For body text */
+    --heading-color: #333; /* Very dark gray - For most headings */
+}
+
+/* --- General Body Styles --- */
+body {
+    font-family: 'Open Sans', sans-serif; /* Modern and readable font for body text */
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    display: flex; /* To push the footer to the bottom of the page */
+    flex-direction: column;
+    min-height: 100vh; /* Minimum height is 100% of the viewport height */
+    padding-top: 56px; /* Compensates for the fixed navbar height */
+}
+
+/* --- Heading Styles (H1 to H6) --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Navbar (Navigation Bar) --- */
+.navbar {
+    background-color: var(--dark-color); /* Dark background */
+    padding: 0.8rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.navbar-brand {
+    color: var(--secondary-color) !important; /* Brand text color */
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    display: flex; /* To align image and text */
+    align-items: center; /* Vertically center */
+}
+
+.navbar-brand img {
+    margin-right: 0.5rem; /* Space between logo and brand text */
+    border-radius: 50%; /* For a round logo if desired */
+}
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important; /* Hover effect */
+}
+
+.navbar-nav .nav-link {
+    color: var(--light-color) !important; /* Navigation link color */
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important; /* Link color on hover and active state */
+}
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1); /* Border for mobile toggle button */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* White burger icon */
+}
+
+/* --- Hero Section (Homepage) --- */
+.hero-section {
+    position: relative;
+    height: 80vh; /* 80% of viewport height */
+    background: url('../img/hero-background.jpg') no-repeat center center/cover; /* Background image */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+}
+
+.hero-content {
+    position: relative; /* Ensures it's above the overlay */
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: white; /* White color for title on dark background */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Text shadow */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px; /* Rounded buttons */
+    transition: all 0.3s ease;
+}
+
+/* --- General Main Content Style --- */
+main {
+    flex: 1; /* Allows main content to take available space, pushing footer to bottom */
+}
+
+section {
+    padding: 60px 0; /* Vertical spacing for each section */
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color); /* Decorative line under section titles */
+}
+
+/* --- About Section --- */
+.about-img {
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* --- Menu Section --- */
+.menu-category-title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.card.menu-item {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover animation */
+    overflow: hidden; /* Ensures image doesn't spill out of rounded corners */
+}
+
+.card.menu-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* More pronounced shadow on hover */
+}
+
+.menu-item
+
+/* css pour galerie */
+/*
+ * style.css
+ * Styles personnalisés pour le site web du restaurant "H Food Resto"
+ */
+
+/* --- CSS Variables for Colors --- */
+:root {
+    --primary-color: #A0522D; /* Terre de Sienne (Brun-Rougeâtre) - Pour les accents, boutons, titres */
+    --secondary-color: #F5DEB3; /* Blanched Almond (Blanc Cassé) - Pour les éléments clairs, texte sur fond sombre */
+    --dark-color: #333; /* Gris très foncé - Pour le fond de la navbar, texte sombre */
+    --light-color: #f8f9fa; /* Presque blanc (Bootstrap default) - Pour le fond des sections, texte clair */
+    --text-color: #555; /* Gris moyen - Pour le texte courant */
+    --heading-color: #333; /* Gris très foncé - Pour la plupart des titres */
+}
+
+/* --- Styles Généraux du Corps (Body) --- */
+body {
+    font-family: 'Open Sans', sans-serif; /* Police moderne et lisible pour le corps */
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    display: flex; /* Pour positionner le footer en bas de page */
+    flex-direction: column;
+    min-height: 100vh; /* La hauteur minimale est de 100% de la fenêtre */
+    margin-top: 56px; /* Ajustement pour la navbar fixe, à vérifier si nécessaire après compilation */
+}
+
+/* Retire la marge supérieure du body une fois la navbar fixe en place,
+   pour éviter un espace vide si la première section n'a pas de padding. */
+body.fixed-navbar-padding {
+    padding-top: 56px; /* Ou la hauteur réelle de votre navbar */
+}
+
+
+/* --- Styles des Titres (H1 à H6) --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Police élégante pour les titres */
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Navbar (Barre de Navigation) --- */
+.navbar {
+    background-color: var(--dark-color); /* Fond sombre */
+    padding: 0.8rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Légère ombre */
+    /* retire le margin-top si vous utilisez le padding-top sur le body */
+    /* margin-top: 56px; */
+}
+
+.navbar-brand {
+    color: var(--secondary-color) !important; /* Couleur du texte de la marque */
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    display: flex; /* Pour aligner l'image et le texte */
+    align-items: center; /* Centrer verticalement */
+}
+
+.navbar-brand img {
+    margin-right: 0.5rem; /* Espace entre le logo et le texte de la marque */
+    border-radius: 50%; /* Pour un logo rond si vous le souhaitez */
+}
+
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important; /* Effet au survol */
+}
+
+.navbar-nav .nav-link {
+    color: var(--light-color) !important; /* Couleur des liens de navigation */
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important; /* Couleur des liens au survol et actif */
+}
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1); /* Bordure du bouton toggle sur mobile */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Icône burger blanche */
+}
+
+/* --- Section Héro (Accueil) --- */
+.hero-section {
+    position: relative;
+    height: 80vh; /* Hauteur de 80% de la fenêtre visible */
+    background: url('../img/hero-background.jpg') no-repeat center center/cover; /* Image de fond */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    /* Supprimé le margin-top ici car il est géré par le body padding-top */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay sombre pour améliorer la lisibilité du texte */
+}
+
+.hero-content {
+    position: relative; /* Pour s'assurer qu'il est au-dessus de l'overlay */
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: white; /* Couleur blanche pour le titre sur fond sombre */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Ombre pour le texte */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px; /* Boutons arrondis */
+    transition: all 0.3s ease;
+}
+
+/* --- Style Général du Contenu Principal (Main) --- */
+main {
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible, poussant le footer vers le bas */
+    /* padding-top: 40px; si la première section n'a pas de padding-top pour compenser la navbar fixe */
+}
+
+section {
+    padding: 60px 0; /* Espacement vertical pour chaque section */
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
